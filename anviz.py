@@ -279,9 +279,9 @@ class Device(object):
             data = self._get_response(CMD_DOWNLOAD_RECORDS, [0, q])
             for r in parse_records(data):
                 yield r
-            if new:
-                self.clear_records(q)
             left = left - q
+        if new:
+            self.clear_records()
 
     def download_all_records(self):
         return self.download_records(new=False)
