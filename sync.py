@@ -21,7 +21,7 @@ class UserRecord(db.Model):
     type_code = db.Column(db.Integer, nullable=False)
 
 
-def sync(progress=False):
+def sync(progress=False, force_all=False):
     config = ConfigParser()
     config.read('anviz-sync.ini')
 
@@ -38,7 +38,7 @@ def sync(progress=False):
 
     # Check stored db
     count = UserRecord.query.count()
-    if count == 0:
+    if count == 0 or force_all:
         only_new = False
     else:
         only_new = True
@@ -82,4 +82,5 @@ def sync(progress=False):
 if __name__ == '__main__':
     import sys
     progress = '--no-progress' not in sys.argv
-    sync(progress=progress)
+    force_all = '--all' in sys.argv
+    sync(progress=progress, force_all=force_all)
