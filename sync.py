@@ -7,6 +7,7 @@
 from saw import SQLAlchemy
 from anviz import Device
 from configparser import ConfigParser
+from progress import ProgressBar, ProgressDummy
 
 db = SQLAlchemy()
 
@@ -42,6 +43,19 @@ def sync(progress=False):
     else:
         only_new = True
 
+    if progress:
+        total = getattr(clock.get_record_info(),
+                        'new_records' if only_new else 'all_records')
+        pbar = ProgressBar("sync [{}]".format(ip_addr), total)
+    else:
+        pbar = ProgressDummy()
+
+    act_name = ('new' if only_new else 'all') + ' records'
+    act_col = 'green' if only_new else 'red'
+
+    pbar.set_activity(act_name, act_col)
+    pbar.step(0)
+
     for record in clock.download_records(only_new):
         user_record = UserRecord(
                 user_code=record.code,
@@ -60,8 +74,12 @@ def sync(progress=False):
         else:
             # discard
             pass
+        pbar.step()
 
     db.commit()
+    pbar.finish('synced')
 
 if __name__ == '__main__':
-    sync(progress=True)
+    import sys
+    progress = '--no-progress' not in sys.argv
+    sync(progress=progress)
