@@ -13,7 +13,6 @@ import struct
 import itertools
 from datetime import datetime
 from collections import namedtuple
-from configparser import ConfigParser
 
 # some constants
 STX = 0xa5
@@ -49,6 +48,8 @@ CMD_GET_DEVICE_SN       = 0x46
 CMD_SET_DEVICE_SN       = 0x47
 CMD_GET_DEVICE_TYPE     = 0x48
 CMD_SET_DEVICE_TYPE     = 0x49
+
+CMD_CLEAR_RECORDS       = 0x4e
 
 # crc16 bits
 _crc_table = (
@@ -278,6 +279,8 @@ class Device(object):
             data = self._get_response(CMD_DOWNLOAD_RECORDS, [0, q])
             for r in parse_records(data):
                 yield r
+            if new:
+                self.clear_records(q)
             left = left - q
 
     def download_all_records(self):
@@ -300,6 +303,23 @@ class Device(object):
             left = left - q
         return staff
 
+    def clear_records(self, amount=None):
+        # Only clear new record marks
+        if amount is None:
+            args = [1] + list(b'\x00\x00\x00')
+        else:
+            assert amount > 0
+            args = [2] + list(struct.pack(">L", amount)[-3:])
+        data = self._get_response(CMD_CLEAR_RECORDS, args)
+        cancelled = struct.unpack(">L", left_fill(data, 4))[0]
+        return cancelled
+
 
 if __name__ == '__main__':
-    clock = Device()
+    from configparser import ConfigParser
+    config = ConfigParser()
+    config.read('anviz-sync.ini')
+    dev_id = config.getint('anviz', 'device_id')
+    ip_addr = config.get('anviz', 'ip_addr')
+    ip_port = config.getint('anviz', 'ip_port')
+    clock = Device(dev_id, ip_addr, ip_port)
