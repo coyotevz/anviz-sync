@@ -124,33 +124,3 @@ class ProgressDummy(object):
 
     def step(self):
         pass
-
-
-def _test():
-    import time
-
-    name = "test"
-    total = 100
-
-    pbar = ProgressBar(name, total)
-    pbar.set_activity('syncing', 'green')
-    pbar.step(0)
-    for i in range(25):
-        time.sleep(0.2)
-        pbar.step()
-
-    pbar.set_activity('task 2', 'red')
-    for i in range(25):
-        time.sleep(0.2)
-        pbar.step()
-
-    pbar.set_activity('task 3', 'blue')
-    for i in range(50):
-        time.sleep(0.1)
-        pbar.step()
-
-    pbar.finish('tested ok')
-
-
-if __name__ == '__main__':
-    _test()
