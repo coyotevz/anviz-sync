@@ -273,14 +273,12 @@ class Device(object):
         for r in parse_records(data):
             yield r
         left = total - q
-        print("total:", total)
         while left > 0:
             q = min([25, left])
             data = self._get_response(CMD_DOWNLOAD_RECORDS, [0, q])
             for r in parse_records(data):
                 yield r
             left = left - q
-            print("left:", left)
 
     def download_all_records(self):
         return self.download_records(new=False)
@@ -295,13 +293,11 @@ class Device(object):
         data = self._get_response(CMD_DOWNLOAD_STAFF_INFO, [1, q])
         staff.extend(parse_staff_info(data))
         left = users - q
-        print("total users:", users)
         while left > 0:
             q = min([12, left])
             data = self._get_response(CMD_DOWNLOAD_STAFF_INFO, [0, q])
             staff.extend(parse_staff_info(data))
             left = left - q
-            print("left:", left)
         return staff
 
 
