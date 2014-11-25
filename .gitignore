@@ -1,0 +1,16 @@
+# Byte-compiled
+__pycache__/
+*.py[cod]
+
+*.swp
+*.mo
+*.db
+*.sqlite3
+
+build/
+dist/
+eggs/
+*.egg-info/
+*.egg
+
+docs/_build/
