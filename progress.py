@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*- 
 
 """
-    sqlrep.progress
-    ~~~~~~~~~~~~~~~
+    progress
+    ~~~~~~~~
 
     Module that contains a ProgressBar object definition.
 
