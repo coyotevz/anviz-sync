@@ -3,6 +3,9 @@
     ~~~~~~~~~~
 
     Software that read Anviz A300 device and sync data with db.
+
+    :copyright: (c) 2014 by Augusto Roccasalva.
+    :license: BSD, see LICENSE for more details.
 """
 from saw import SQLAlchemy
 from anviz import Device
