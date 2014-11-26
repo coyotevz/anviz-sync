@@ -1,8 +1,11 @@
 """
-    anviz
-    ~~~~~
+    anviz_sync.anviz
+    ~~~~~~~~~~~~~~~~
 
-    Write docs here.
+    Anviz device abstraction, communication protocol and commands.
+
+    crc table & algorithm based on:
+    https://github.com/benperiton/anviz-protocol
 
     :copyright: (c) 2014 by Augusto Roccasalva
     :license: BSD, see LICENSE for more details.

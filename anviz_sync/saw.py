@@ -1,9 +1,12 @@
 """
-    nobix.lib.saw
-    ~~~~~~~~~~~~~
+    anviz_sync.saw
+    ~~~~~~~~~~~~~~
 
     SQLAalchemy wrapper based on http://github.com/lucuma/sqlalchemy-wrapper
     code.
+
+    :copyright: (c) 2014 by Augusto Roccasalva.
+    :license: BSD, see LICENSE for more details.
 """
 import threading
 

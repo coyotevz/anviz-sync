@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*- 
 
 """
-    progress
-    ~~~~~~~~
+    anviz_progress.progress
+    ~~~~~~~~~~~~~~~~~~~~~~~
 
     Module that contains a ProgressBar object definition.
 
-    :copyright: (c) 2011 by Augusto Roccasalva.
+    :copyright: (c) 2014 by Augusto Roccasalva.
     :license: BSD, see LICENSE for more details.
 """
 

@@ -19,7 +19,7 @@ setup(
         'Environment :: Console',
         'Intented Audience :: End Users/Desktop',
         'Intented Audience :: Developers',
-        'License :: OSI Approved :: MIT License',
+        'License :: OSI Approved :: BSD License',
         'Natural Language :: English',
         'Operating System :: POSIX ',
         'Operating System :: POSIX :: BSD',
@@ -32,7 +32,7 @@ setup(
     ],
     keywords="anviz a300 time attendance",
     platforms='any',
-    license='MIT',
+    license='BSD',
     packages=['anviz_sync'],
     install_requires=[
         'SQLAlchemy>=0.9.8',
