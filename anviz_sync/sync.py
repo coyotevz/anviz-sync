@@ -14,8 +14,8 @@ from progress import ProgressBar, ProgressDummy
 
 db = SQLAlchemy()
 
-class UserRecord(db.Model):
-    __tablename__ = 'user_record'
+class AttendanceRecord(db.Model):
+    __tablename__ = 'attendance_record'
 
     id = db.Column(db.Integer, primary_key=True)
     user_code = db.Column(db.Integer, nullable=False)
