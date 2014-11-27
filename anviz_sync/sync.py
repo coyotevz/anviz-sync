@@ -7,10 +7,11 @@
     :copyright: (c) 2014 by Augusto Roccasalva.
     :license: BSD, see LICENSE for more details.
 """
-from saw import SQLAlchemy
-from anviz import Device
 from configparser import ConfigParser
-from progress import ProgressBar, ProgressDummy
+
+from anviz_sync.saw import SQLAlchemy
+from anviz_sync.anviz import Device
+from anviz_sync.progress import ProgressBar, ProgressDummy
 
 db = SQLAlchemy()
 
