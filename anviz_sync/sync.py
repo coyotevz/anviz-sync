@@ -83,8 +83,13 @@ def sync(progress=False, force_all=False):
     db.commit()
     pbar.finish('synced')
 
-if __name__ == '__main__':
+
+def main():
     import sys
     progress = '--no-progress' not in sys.argv
     force_all = '--all' in sys.argv
     sync(progress=progress, force_all=force_all)
+
+
+if __name__ == '__main__':
+    main()
