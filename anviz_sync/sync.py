@@ -41,7 +41,7 @@ def sync(progress=False, force_all=False):
     db.create_all()
 
     # Check stored db
-    count = UserRecord.query.count()
+    count = AttendanceRecord.query.count()
     if count == 0 or force_all:
         only_new = False
     else:
@@ -61,7 +61,7 @@ def sync(progress=False, force_all=False):
     pbar.step(0)
 
     for record in clock.download_records(only_new):
-        user_record = UserRecord(
+        user_record = AttendanceRecord(
                 user_code=record.code,
                 datetime=record.datetime,
                 bkp_type=record.bkp,
@@ -69,8 +69,8 @@ def sync(progress=False, force_all=False):
         )
 
         # check that record don't exist in db
-        count = UserRecord.query.filter(UserRecord.user_code==record.code)\
-                                .filter(UserRecord.datetime==record.datetime)\
+        count = AttendanceRecord.query.filter(AttendanceRecord.user_code==record.code)\
+                                .filter(AttendanceRecord.datetime==record.datetime)\
                                 .count()
         if count == 0:
             # store
