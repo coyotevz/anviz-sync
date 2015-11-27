@@ -36,6 +36,7 @@ setup(
     packages=['anviz_sync'],
     install_requires=[
         'SQLAlchemy>=0.9.8',
+        'configparser>=3.3.0',
     ],
     entry_points={
         'console_scripts': [
