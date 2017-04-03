@@ -20,6 +20,11 @@ from collections import namedtuple
 # some constants
 STX = 0xa5
 ACK_sum = 0x80
+
+# SSEC: by http://github.com/montis/Anviz-Protocol-java
+# The documentation says that dates are given as seconds since year 2000
+# However, experience shows that it's actually from the second day of
+# the year 2000
 SSEC = datetime(2000, 1, 2, 0, 0).timestamp()
 
 # return value constants
