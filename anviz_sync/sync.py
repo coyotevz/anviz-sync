@@ -7,7 +7,10 @@
     :copyright: (c) 2014 by Augusto Roccasalva.
     :license: BSD, see LICENSE for more details.
 """
-from configparser import ConfigParser
+try:
+    from configparser import ConfigParser
+except ImportError: # py2
+    from ConfigParser import ConfigParser
 
 from anviz_sync.saw import SQLAlchemy
 from anviz_sync.anviz import Device

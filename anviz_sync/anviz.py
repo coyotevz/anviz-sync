@@ -324,7 +324,11 @@ class Device(object):
 
 
 if __name__ == '__main__':
-    from configparser import ConfigParser
+    try:
+        from configparser import ConfigParser
+    except ImportError: # py2
+        from ConfigParser import ConfigParser
+
     config = ConfigParser()
     config.read('anviz-sync.ini')
     dev_id = config.getint('anviz', 'device_id')
