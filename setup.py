@@ -40,6 +40,7 @@ setup(
     entry_points={
         'console_scripts': [
             'anviz-sync = anviz_sync.sync:main'
+            'anviz-rt = anviz_sync.rt:main'
         ],
     },
 )
