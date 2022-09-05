@@ -6,7 +6,7 @@ __pycache__/
 *.mo
 *.db
 *.sqlite3
-anviz-sync.ini
+*.ini
 
 build/
 dist/
