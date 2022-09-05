@@ -20,6 +20,13 @@ from anviz_sync.models import AttendanceRecord, configure_db, db
 from anviz_sync.saw import SQLAlchemy
 
 
+TYPES = {
+    0: "Entrada",
+    1: "Salida",
+    2: "BREAK",
+}
+
+
 def get_record(raw_data):
     crc_ok = anviz.crc16(raw_data[:23]) == raw_data[-2:]
     if not crc_ok:
@@ -42,7 +49,7 @@ def main():
 
     # config device
     ip_addr = config.get("anviz-rt", "ip_addr")
-    ip_port = config.get("anviz-rt", "ip_port")
+    ip_port = config.getint("anviz-rt", "ip_port")
 
     reconnect = True
 
